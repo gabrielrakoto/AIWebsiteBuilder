@@ -1,0 +1,67 @@
+Prompt pour AI App Builder - Site Web Delage Mécanique Inc.
+Créez un site web professionnel en français pour Delage Mécanique Inc., un garage automobile situé à Québec. Le design doit être moderne, responsive et incluant des animations fluides et engageantes.
+Spécifications générales :
+Une animation de carousel sur les images de la hero section
+Animations au scroll (parallax, fade-in, slide-in)
+Navigation fixe avec menu hamburger sur mobile
+Transitions fluides entre les sections
+Polices modernes et lisibles
+Optimisé pour mobile, tablette et desktop
+Structure du site (5 pages) :
+PAGE 1 - ACCUEIL
+Hero section imposante avec image d'arrière-plan (atelier mécanique ou voiture) incluant :
+Logo Delage Mécanique Inc.
+Titre accrocheur
+Bouton d'appel à l'action (Prendre rendez-vous / Nous contacter)
+Section résumé présentant les 4 sections suivantes sous forme de cartes avec icônes :
+Carte "À Propos" avec icône et texte teaser
+Carte "Services" avec icône et texte teaser
+Carte "Réalisations" avec icône et texte teaser
+Carte "Contact" avec icône et texte teaser
+Chaque carte doit être cliquable et mener à la page correspondante
+Animations : cartes qui s'animent au scroll, effet hover avec élévation
+PAGE 2 - À PROPOS
+Titre de section "À Propos"
+Slogan mis en évidence : "Votre confiance nous tient à cœur"
+Description de l'entreprise (créer un texte professionnel de 2-3 paragraphes sur l'expertise, l'engagement envers les clients, et les valeurs de qualité et fiabilité)
+Section avec statistiques/chiffres clés (années d'expérience, clients satisfaits, etc.) en grandes icônes animées
+Photo ou illustration d'équipe/atelier
+Animation : texte qui apparaît progressivement, compteurs animés pour les statistiques
+PAGE 3 - SERVICES
+Titre de section "Nos Services"
+4 cartes de services détaillées avec icônes :
+Pose de pneus - Icône de pneu, description du service
+Mécanique générale - Icône d'outils, description du service
+Alignement - Icône d'alignement, description du service
+Test de l'alternateur en hiver - Icône de batterie/électrique, description du service saisonnier
+Disposition en grille (2x2 sur desktop, empilée sur mobile)
+Effet hover avec zoom léger et changement de couleur
+Section CTA en bas "Besoin d'un service ? Contactez-nous !"
+PAGE 4 - GALERIE
+Titre de section "Nos Réalisations"
+Galerie photo en grille mosaïque (masonry layout)
+9-12 emplacements pour photos de véhicules réparés/entretenus
+Effet lightbox au clic (agrandissement de l'image)
+Filtres optionnels par catégorie si pertinent
+Animation : images qui chargent avec effet de fondu
+Responsive : 3-4 colonnes sur desktop, 2 sur tablette, 1 sur mobile
+PAGE 5 - CONTACT
+Titre de section "Contactez-nous"
+Mise en page en 2 colonnes (sur desktop) :
+Colonne gauche - Informations de contact :
+Téléphone : (418) 845-8551 (cliquable sur mobile)
+Email : info@delagemecanique.com (cliquable)
+Adresse : 2660 Bd Bastien, Québec, QC G2B 1A5
+Lien Facebook : https://www.facebook.com/delagemecanique?locale=fr_CA (avec icône)
+Heures d'ouverture (créer des heures réalistes)
+Colonne droite - Carte Google Maps intégrée montrant l'emplacement
+Formulaire de contact (nom, email, téléphone, message)
+Animation : icônes de contact avec effet pulse
+Éléments communs à toutes les pages :
+Header avec logo, navigation et numéro de téléphone
+Footer avec informations de contact, liens réseaux sociaux, et copyright
+Bouton "Retour en haut" sur scroll
+Effets de transition de page fluides
+Palette de couleurs suggérée :
+Générez un site web complet, moderne et professionnel qui inspire confiance et professionnalisme.
+
