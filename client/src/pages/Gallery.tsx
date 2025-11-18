@@ -2,7 +2,6 @@ import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
-import vehicle1 from "@assets/generated_images/Serviced_vehicle_showcase_7808ce4b.png";
 import brake from "@assets/generated_images/Brake_system_repair_94400954.png";
 import oil from "@assets/generated_images/Oil_change_service_c988fe36.png";
 import engine from "@assets/generated_images/Engine_service_result_421eb16a.png";
@@ -10,9 +9,12 @@ import suspension from "@assets/generated_images/Suspension_repair_work_9e97273f
 import tire from "@assets/generated_images/Tire_installation_close-up_1591fef3.png";
 import alignment from "@assets/generated_images/Wheel_alignment_service_cb1ef237.png";
 import alternator from "@assets/generated_images/Alternator_testing_service_615c12ce.png";
-import workshop from "@assets/generated_images/Modern_automotive_workshop_interior_6432b6f8.png";
 import mechanic from "@assets/generated_images/Mechanic_working_on_engine_29cc22ba.png";
-import carLift from "@assets/generated_images/Car_on_lift_in_shop_dc69b54f.png";
+
+// Images réelles depuis Imgur
+const vehicle1 = "https://i.imgur.com/16Xvghq.jpeg";
+const workshop = "https://i.imgur.com/4Rsh3F7.jpeg";
+const carLift = "https://i.imgur.com/EetMK5u.jpeg?v=2";
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);

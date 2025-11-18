@@ -86,8 +86,12 @@ export default function Contact() {
   ];
 
   const hours = [
-    { day: "Lundi - Vendredi", hours: "8h00 - 17h00" },
-    { day: "Samedi", hours: "9h00 - 13h00" },
+    { day: "Lundi", hours: "8h00 - 12h00, 13h00 - 17h00" },
+    { day: "Mardi", hours: "8h00 - 12h00, 13h00 - 17h00" },
+    { day: "Mercredi", hours: "8h00 - 12h00, 13h00 - 17h00" },
+    { day: "Jeudi", hours: "8h00 - 12h00, 13h00 - 17h00" },
+    { day: "Vendredi", hours: "8h00 - 12h00, 13h00 - 17h00" },
+    { day: "Samedi", hours: "Fermé" },
     { day: "Dimanche", hours: "Fermé" },
   ];
 

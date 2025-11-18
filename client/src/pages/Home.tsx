@@ -105,25 +105,62 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         </div>
 
-        {/* Carousel Controls */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/20"
+        {/* Carousel Controls - BOUTONS HTML PURS AVEC STYLES FORCÉS */}
+        <button
           onClick={prevImage}
           data-testid="button-carousel-prev"
+          style={{ 
+            position: 'absolute',
+            left: '1rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 10,
+            width: '2.5rem',
+            height: '2.5rem',
+            borderRadius: '9999px',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'background-color 0.2s'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
         >
-          <ChevronLeft className="w-6 h-6" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/20"
+          <ChevronLeft style={{ width: '1.5rem', height: '1.5rem' }} />
+        </button>
+
+        <button
           onClick={nextImage}
           data-testid="button-carousel-next"
+          style={{ 
+            position: 'absolute',
+            right: '1rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 10,
+            width: '2.5rem',
+            height: '2.5rem',
+            borderRadius: '9999px',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'background-color 0.2s'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
         >
-          <ChevronRight className="w-6 h-6" />
-        </Button>
+          <ChevronRight style={{ width: '1.5rem', height: '1.5rem' }} />
+        </button>
 
         {/* Carousel Indicators */}
         <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-2">
