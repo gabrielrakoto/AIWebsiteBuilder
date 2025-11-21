@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { insertContactMessageSchema, type InsertContactMessage } from "@shared/schema";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -16,16 +15,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 import { SEO } from "@/components/SEO";
 import { Phone, Mail, MapPin, Clock, Facebook } from "lucide-react";
+
+const contactSchema = z.object({
+  name: z.string().min(1, "Le nom est requis"),
+  email: z.string().email("Email invalide"),
+  phone: z.string().min(1, "Le téléphone est requis"),
+  message: z.string().min(1, "Le message est requis"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<InsertContactMessage>({
-    resolver: zodResolver(insertContactMessageSchema),
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -34,31 +42,55 @@ export default function Contact() {
     },
   });
 
-  const mutation = useMutation({
-    mutationFn: async (data: InsertContactMessage) => {
-      return await apiRequest("POST", "/api/contact", data);
-    },
-    onSuccess: () => {
-      setIsSubmitted(true);
-      toast({
-        title: "Message envoyé !",
-        description:
-          "Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.",
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+
+    try {
+      // Préparer les données pour Formspree
+      const formData = new FormData();
+
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('message', data.message);
+
+      // Ajouter un sujet personnalisé pour l'email
+      formData.append('_subject', `Nouveau message de contact - ${data.name}`);
+
+      // Email de réponse automatique au client
+      formData.append('_replyto', data.email);
+
+      // Envoyer à Formspree
+      const response = await fetch('https://formspree.io/f/xldvggok', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
-      form.reset();
-    },
-    onError: () => {
+
+      if (response.ok) {
+        toast({
+          title: "Message envoyé !",
+          description:
+            "Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.",
+        });
+        setIsSubmitted(true);
+        form.reset();
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
       toast({
         title: "Erreur",
         description:
           "Une erreur s'est produite lors de l'envoi du message. Veuillez réessayer.",
         variant: "destructive",
       });
-    },
-  });
-
-  const onSubmit = (data: InsertContactMessage) => {
-    mutation.mutate(data);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -328,13 +360,13 @@ export default function Contact() {
                         type="submit"
                         size="lg"
                         className="w-full"
-                        disabled={mutation.isPending}
+                        disabled={isSubmitting}
                         data-testid="button-submit-contact"
                       >
-                        {mutation.isPending ? "Envoi en cours..." : "Envoyer le message"}
+                        {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                       </Button>
 
-                      {isSubmitted && !mutation.isPending && (
+                      {isSubmitted && !isSubmitting && (
                         <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg text-center">
                           <p className="text-sm text-foreground font-medium">
                             Merci ! Nous vous répondrons bientôt.
