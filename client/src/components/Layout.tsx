@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect } from "react";
-import { Phone, Menu, X, ArrowUp, Facebook } from "lucide-react";
+import { Phone, Menu, X, ArrowUp } from "lucide-react"; // Facebook retiré pour éviter warning
 import { Button } from "@/components/ui/button";
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -51,10 +51,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
             {/* Logo */}
             <Link href="/" data-testid="link-home">
               <div className="flex items-center gap-3 hover-elevate active-elevate-2 px-4 py-2 rounded-md cursor-pointer transition-transform">
-                <div className="w-12 h-12 bg-primary rounded-md flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary-foreground">
-                    DM
-                  </span>
+                <div className="w-12 h-12 flex items-center justify-center">
+                  <img
+                    src="/images/logo.png" // <-- Nouveau logo sans background
+                    alt="Logo Delage Mécanique"
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <div className="hidden sm:block">
                   <div className="text-xl font-bold text-foreground leading-tight">
@@ -78,7 +80,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                         ? "bg-accent text-accent-foreground"
                         : ""
                     }`}
-                    data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    data-testid={`link-nav-${link.label
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
                   >
                     {link.label}
                   </Button>
@@ -104,11 +108,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               data-testid="button-menu-toggle"
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
           </div>
         </div>
@@ -126,13 +126,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
                         ? "bg-accent text-accent-foreground"
                         : ""
                     }`}
-                    data-testid={`link-nav-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    data-testid={`link-nav-mobile-${link.label
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
                   >
                     {link.label}
                   </Button>
                 </Link>
               ))}
-              <Button variant="default" className="w-full gap-2 mt-4" asChild data-testid="button-call-mobile">
+              <Button
+                variant="default"
+                className="w-full gap-2 mt-4"
+                asChild
+                data-testid="button-call-mobile"
+              >
                 <a href="tel:4188458551">
                   <Phone className="w-4 h-4" />
                   (418) 845-8551
@@ -153,10 +160,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
             {/* Company Info */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-                  <span className="text-xl font-bold text-primary-foreground">
-                    DM
-                  </span>
+                <div className="w-10 h-10 flex items-center justify-center">
+                  <img
+                    src="/images/logo.png" // <-- Logo mis à jour ici aussi
+                    alt="Logo Delage Mécanique"
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <div>
                   <div className="text-lg font-bold text-card-foreground">
@@ -179,7 +188,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 {navLinks.map((link) => (
                   <li key={link.path}>
                     <Link href={link.path}>
-                      <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer" data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                      <span
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                        data-testid={`link-footer-${link.label
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")}`}
+                      >
                         {link.label}
                       </span>
                     </Link>
@@ -214,18 +228,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   </a>
                 </li>
                 <li>2660 Bd Bastien, Québec, QC G2B 1A5</li>
-                <li className="pt-2">
-                  <a
-                    href="https://www.facebook.com/delagemecanique?locale=fr_CA"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 hover:text-primary transition-colors"
-                    data-testid="link-facebook"
-                  >
-                    <Facebook className="w-5 h-5" />
-                    Facebook
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

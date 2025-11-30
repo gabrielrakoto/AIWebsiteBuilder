@@ -83,6 +83,7 @@ export default function Home() {
         ogTitle="Delage Mécanique Inc. - Garage automobile à Québec"
         ogDescription="Service automobile de qualité supérieure à Québec. Plus de 15 ans d'expérience. Contactez-nous au (418) 845-8551."
       />
+
       {/* Hero Section with Carousel */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Carousel Images */}
@@ -105,7 +106,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         </div>
 
-        {/* Carousel Controls - BOUTONS HTML PURS AVEC STYLES FORCÉS */}
+        {/* Carousel Controls */}
         <button
           onClick={prevImage}
           data-testid="button-carousel-prev"
@@ -184,12 +185,14 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          {/* Logo */}
+          {/* Logo remplacé avec fond semi-transparent */}
           <div className="mb-8 flex justify-center">
-            <div className="w-24 h-24 bg-primary rounded-lg flex items-center justify-center shadow-2xl">
-              <span className="text-5xl font-bold text-primary-foreground">
-                DM
-              </span>
+            <div className="w-24 h-24 rounded-lg flex items-center justify-center shadow-2xl bg-white/20 backdrop-blur-md">
+              <img
+                src="/images/logo.png"
+                alt="Logo Delage Mécanique"
+                className="object-contain w-full h-full"
+              />
             </div>
           </div>
 
